@@ -7,10 +7,7 @@ import axios from 'axios'
 import { saveAs } from 'file-saver';
 
 
-const API_ROOT = 'http://localhost:5000/api';
-
 const api = axios.create({
-    // baseURL: API_ROOT,
     headers: { 'content-type': 'application/json' }
 });
 
@@ -41,7 +38,7 @@ const callApi = async  (endpoint, method = 'GET', responseType = 'json', body, s
 
         let data = response.data.result || response.data;
 
-        if(endpoint === '/sign-in') {
+        if(endpoint === '/api/sign-in') {
             const { accessToken } = data;
             setToken({ accessToken })
         }
@@ -57,7 +54,7 @@ const callApi = async  (endpoint, method = 'GET', responseType = 'json', body, s
     } catch (err) {
 
         if (err.response.status !== 401) {
-            if(endpoint === '/sign-in') {
+            if(endpoint === '/api/sign-in') {
                 const error = {
                     name: 'ValidationError',
                     errors: { password: { message: 'Գաղտնաբառը սխալ է'} }
