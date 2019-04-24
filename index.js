@@ -3,7 +3,7 @@ const app = express();
 
 
 app.use('*', (req, res) => {
-    res.send('hello');
+    res.send('hello test');
 });
 
 
